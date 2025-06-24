@@ -22,14 +22,14 @@
 	<div class="header-content">
 		<!-- Left Side (Title, Subtitle, Buttons) -->
 		<div class="header-left">
-			<h1 class="header-title">Rebound v0.0.6</h1>
+			<h1 class="header-title">Rebound v0.0.8</h1>
 			<p class="header-subtitle">The best of Rebound in a brand new release.</p>
 			<div class="header-buttons">
 				<Fluent.Button
 					variant="accent"
 					on:click={() =>
 						(window.location.href =
-							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.6-Beta/Rebound.Hub.Installer.exe')}
+							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.8-Beta/Rebound.Hub.Installer.zip')}
 					>Download</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink" on:click={() => goto('/docs/rebound/release-notes')}

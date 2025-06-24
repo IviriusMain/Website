@@ -216,7 +216,9 @@
 
 <div style="display: flex; justify-content: center; align-items: center;">
 	<div style="display: flex; margin: 50px auto 30px auto; gap: 16px;">
-		<Fluent.Button variant="accent">Download</Fluent.Button>
+		<Fluent.Button on:click={() =>
+						(window.location.href =
+							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.8-Beta/Rebound.Hub.Installer.zip')} variant="accent">Download</Fluent.Button>
 		<Fluent.Button>Contribute</Fluent.Button>
 	</div>
 </div>
