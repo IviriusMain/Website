@@ -216,16 +216,19 @@
 
 <div style="display: flex; justify-content: center; align-items: center;">
 	<div style="display: flex; margin: 50px auto 30px auto; gap: 16px;">
-		<Fluent.Button on:click={() =>
-						(window.location.href =
-							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.9-Beta/Rebound.Hub.Installer.zip')} variant="accent">Download</Fluent.Button>
+		<Fluent.Button
+			on:click={() =>
+				(window.location.href =
+					'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.9-Beta/Rebound.Hub.Installer.zip')}
+			variant="accent">Download</Fluent.Button
+		>
 		<Fluent.Button>Contribute</Fluent.Button>
 	</div>
 </div>
 
 <div class="cards-container" style="margin-top: 20px;">
 	<div class="card">
-		<img src="./reboundbanner1.png" alt="Card Image" class="card-image" />
+		<img src="./rebound/SafeModding.png" alt="Card Image" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Safe modding</h2>
@@ -241,7 +244,7 @@
 		</div>
 	</div>
 	<div class="card">
-		<img src="./reboundbanner2.png" alt="Card Image" class="card-image" />
+		<img src="./rebound/100PercentWinUI.png" alt="Card Image" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">100% WinUI</h2>
@@ -257,7 +260,7 @@
 		</div>
 	</div>
 	<div class="card">
-		<img src="./reboundbanner3.png" alt="Card Image" class="card-image" />
+		<img src="./rebound/NotAReskin.png" alt="Card Image" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Not a reskin, but a rewrite</h2>
@@ -273,22 +276,7 @@
 		</div>
 	</div>
 	<div class="card">
-		<img src="./homepageheader.png" alt="Card Image" class="card-image" />
-		<div class="card-content">
-			<div>
-				<h2 class="card-title">Fast and resource efficient</h2>
-				<p class="card-description">
-					Rebound apps use Native Ahead of Time compilation, which compiles application code into
-					machine code directly, ensuring fast startup and low resource usage.
-				</p>
-			</div>
-			<div class="card-footer">
-				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<img src="./homepageheader.png" alt="Card Image" class="card-image" />
+		<img src="./rebound/FOSS.png" alt="Card Image" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Free and open source</h2>
@@ -319,7 +307,7 @@
 		</div>
 	</div>
 	<div class="card">
-		<img src="./homepageheader.png" alt="Card Image" class="card-image" />
+		<img src="./rebound/TrustedByExperts.png" alt="Card Image" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Trusted by Experts</h2>

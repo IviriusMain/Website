@@ -3,6 +3,10 @@
 	import * as Fluent from 'fluent-svelte';
 	import 'fluent-svelte/theme.css';
 	import { goto } from '$app/navigation';
+	function scrollToSection() {
+		const target = document.getElementById('main-content');
+		target?.scrollIntoView({ behavior: 'smooth' });
+	}
 </script>
 
 <!-- Head Section -->
@@ -18,7 +22,52 @@
 	<meta property="og:image:type" content="image/png" />
 </svelte:head>
 
-<header class="main-header">
+<div class="hero-wrapper">
+	<img src="/WallpaperDark.png" alt="bg" class="background" />
+
+	<!-- Corner Screenshots -->
+	<img src="/runBoxScreenshot.png" class="corner corner-tl" />
+	<img src="/winverScreenshot.png" class="corner corner-tr" />
+	<img src="/diskCleanupScreenshot.png" class="corner corner-bl" />
+	<img src="/textEditorScreenshot.png" class="corner corner-br" />
+
+	<div class="glass-card">
+		<div class="title-bar">
+			<span>About us</span>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				style="fill: var(--fds-text-primary); width: 12px; height: 12px; margin-right:8px;"
+			>
+				<path
+					d="M 10 11.416016 L 1.708984 19.707031 C 1.513672 19.902344 1.279297 20 1.005859 20 C 0.719401 20 0.480143 19.903971 0.288086 19.711914 C 0.096029 19.519857 0 19.2806 0 18.994141 C 0 18.720703 0.097656 18.486328 0.292969 18.291016 L 8.583984 10 L 0.292969 1.708984 C 0.097656 1.513672 0 1.276043 0 0.996094 C 0 0.859375 0.026042 0.729168 0.078125 0.605469 C 0.130208 0.481771 0.201823 0.375977 0.292969 0.288086 C 0.384115 0.200195 0.491536 0.130209 0.615234 0.078125 C 0.738932 0.026043 0.869141 0 1.005859 0 C 1.279297 0 1.513672 0.097656 1.708984 0.292969 L 10 8.583984 L 18.291016 0.292969 C 18.486328 0.097656 18.723957 0 19.003906 0 C 19.140625 0 19.269205 0.026043 19.389648 0.078125 C 19.51009 0.130209 19.615885 0.201824 19.707031 0.292969 C 19.798176 0.384115 19.869791 0.48991 19.921875 0.610352 C 19.973957 0.730795 20 0.859375 20 0.996094 C 20 1.276043 19.902344 1.513672 19.707031 1.708984 L 11.416016 10 L 19.707031 18.291016 C 19.902344 18.486328 20 18.720703 20 18.994141 C 20 19.130859 19.973957 19.261068 19.921875 19.384766 C 19.869791 19.508463 19.799805 19.615885 19.711914 19.707031 C 19.624023 19.798178 19.518229 19.869791 19.394531 19.921875 C 19.270832 19.973959 19.140625 20 19.003906 20 C 18.723957 20 18.486328 19.902344 18.291016 19.707031 Z"
+				/>
+			</svg>
+		</div>
+
+		<div class="content">
+			<div style="display:flex; flex-direction:row; align-items: center;">
+				<img src="/favicon.png" alt="logo" class="logo" />
+				<p style="margin-left: 24px; margin-bottom: 24px; font-size: 32px;">Ivirius Community</p>
+			</div>
+			<div style="background-color: var(--fds-control-fill-default); padding: 16px 32px;">
+				<p style="text-align: left;">
+					We make and contribute to the apps that make Windows 11 truly fluent and consistent.
+				</p>
+				<p style="text-align: left;">
+					Since 2020, we've been building, designing, and improving tools such as Ivirius Text
+					Editor and Rebound for you to have the best experience with Windows 11 and WinUI.
+				</p>
+			</div>
+		</div>
+
+		<div class="bottom-bar">
+			<Fluent.Button variant="accent" on:click={scrollToSection}>Get started</Fluent.Button>
+		</div>
+	</div>
+</div>
+
+<header id="main-content" class="main-header">
 	<div class="header-content">
 		<!-- Left Side (Title, Subtitle, Buttons) -->
 		<div class="header-left">
@@ -41,7 +90,7 @@
 		<!-- Right Side (Image) -->
 		<div class="header-right">
 			<img
-				src="./Rebound-v0.0.6-Beta.png"
+				src="./Rebound-v0.0.9-Beta.png"
 				alt="Reboud Hero Demo Visual"
 				class="header-image"
 				loading="lazy"
@@ -60,7 +109,7 @@
 
 <div class="cards-container">
 	<div class="card">
-		<img src="./homepageheader.png" alt="Ivirius Text Editor preview" class="card-image" />
+		<img src="./ivrPreviewCard.png" alt="Ivirius Text Editor preview" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Ivirius Text Editor</h2>
@@ -77,6 +126,9 @@
 						(window.location.href =
 							'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
 					>Download</Fluent.Button
+				>
+				<Fluent.Button on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}
+					>Join Beta</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
 			</div>
@@ -112,7 +164,7 @@
 	</div>
 
 	<div class="card">
-		<img src="./homepageheader.png" alt="Rebound 11 preview" class="card-image" />
+		<img src="./reboundPreviewCard.png" alt="Rebound 11 preview" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Rebound</h2>
@@ -140,7 +192,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<!--<div class="card">
 		<img src="./homepageheader.png" alt="NuGet Gallery Preview" class="card-image" />
 		<div class="card-content">
 			<div>
@@ -161,10 +213,10 @@
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
 			</div>
 		</div>
-	</div>
+	</div>-->
 
 	<div class="card">
-		<img src="./homepageheader.png" alt="Discord Server Card" class="card-image" />
+		<img src="./discordPreviewCard.png" alt="Discord Server Card" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Discord Server</h2>
@@ -178,13 +230,6 @@
 					variant="accent"
 					on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}>Join</Fluent.Button
 				>
-				<Fluent.Flyout>
-					<Fluent.Button variant="hyperlink">Affiliated servers</Fluent.Button>
-					<svelte:fragment slot="flyout">
-						<Fluent.Button variant="hyperlink">Developer Sanctuary</Fluent.Button>
-						<Fluent.Button variant="hyperlink">Windows Customization Hub</Fluent.Button>
-					</svelte:fragment>
-				</Fluent.Flyout>
 			</div>
 		</div>
 	</div>
@@ -323,8 +368,11 @@
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		overflow: hidden;
 		background: var(--fds-control-fill-default);
+		transition: transform 0.3s ease;
 	}
-
+	.card:hover {
+		transform: scale(1.02);
+	}
 	.card-image {
 		width: 100%;
 		height: 200px;
@@ -348,6 +396,7 @@
 	.card-description {
 		flex-grow: 1;
 		margin: 10px 0;
+		font-size: small;
 	}
 
 	.card-footer {
@@ -358,5 +407,138 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+	}
+
+	h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		margin-bottom: 1.5rem;
+		font-size: 1.2rem;
+	}
+	.hero-wrapper {
+		position: relative;
+		height: calc(100vh - 60px);
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: blur(20px) brightness(0.6);
+		z-index: -10;
+	}
+
+	.corner {
+		position: absolute;
+		width: 240px;
+		opacity: 0.9;
+		filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+		transition: transform 0.3s ease;
+	}
+
+	.corner:hover {
+		transform: scale(1.05) rotate(0deg);
+	}
+
+	.corner-tl {
+		top: 2rem;
+		left: 2rem;
+		transform: rotate(-8deg);
+	}
+	.corner-tr {
+		top: 2rem;
+		right: 2rem;
+		transform: rotate(6deg);
+	}
+	.corner-bl {
+		bottom: 2rem;
+		left: 2rem;
+		transform: rotate(5deg);
+	}
+	.corner-br {
+		bottom: 2rem;
+		right: 2rem;
+		transform: rotate(-5deg);
+		width: 320px;
+	}
+
+	.glass-card {
+		background: var(--fds-control-fill-input-active); /* translucent background */
+		backdrop-filter: blur(100px); /* blur behind */
+		-webkit-backdrop-filter: blur(100px); /* Safari support */
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 8px;
+		text-align: center;
+		max-width: 500px;
+		z-index: 10;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+		transition: transform 0.3s ease;
+	}
+
+	.glass-card:hover {
+		transform: scale(1.02);
+	}
+	.logo {
+		height: 60px;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
+		opacity: 0.9;
+	}
+
+	.title-bar {
+		padding: 8px 12px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		user-select: none;
+	}
+
+	.content {
+		margin-top: 32px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.logo {
+		width: 80px;
+		height: 80px;
+		object-fit: contain;
+	}
+
+	.content p {
+		text-align: center;
+		font-size: 1rem;
+		opacity: 0.85;
+		margin: 0;
+	}
+
+	.bottom-bar {
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		padding: 24px;
+		display: flex;
+		justify-content: flex-end;
+		background: var(--fds-control-on-image-fill-default);
 	}
 </style>

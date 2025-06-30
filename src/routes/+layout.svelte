@@ -275,10 +275,6 @@
 		width: 100%; /* Allow it to stretch within the limit */
 	}
 
-	.overflow-pane {
-		visibility: collapse;
-	}
-
 	/* Make items move to the overflow pane dynamically */
 	@media (max-width: 700px) {
 		.menu {
@@ -288,9 +284,6 @@
 		}
 		.items {
 			visibility: collapse;
-		}
-		.overflow-pane {
-			visibility: visible;
 		}
 	}
 </style>

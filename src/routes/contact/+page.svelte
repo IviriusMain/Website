@@ -7,7 +7,6 @@
 
 	//Variables
 	let open = false;
-	let openTooShortSub = false;
 	let errorMessage = '';
 
 	let email = '';
@@ -16,6 +15,7 @@
 	let hcaptchaLoaded = false;
 	let hcaptchaWidget: any;
 	let captchaToken = '';
+	let severity = 'critical';
 
 	// Load hCaptcha script
 	onMount(() => {
@@ -57,11 +57,13 @@
 
 	function onCaptchaExpired() {
 		captchaToken = '';
+		severity = 'critical';
 		errorMessage = 'Captcha expired. Please try again.';
 		open = true;
 	}
 
 	function onCaptchaError(error) {
+		severity = 'critical';
 		errorMessage = 'Captcha error occurred. Please try again.';
 		open = true;
 	}
@@ -73,18 +75,21 @@
 
 	function validateForm() {
 		if (!validateEmail(email)) {
+			severity = 'critical';
 			errorMessage = 'Email is not valid!';
 			open = true;
 			return false;
 		}
 
 		if (subject.length < 5) {
+			severity = 'caution';
 			errorMessage = 'Subject must be at least 5 characters long!';
 			open = true;
 			return false;
 		}
 
 		if (message.length < 25) {
+			severity = 'caution';
 			errorMessage = 'Message must be at least 25 characters long!';
 			open = true;
 			return false;
@@ -100,6 +105,7 @@
 			// Execute captcha challenge - this will trigger the captcha verification flow
 			window.hcaptcha.execute(hcaptchaWidget);
 		} else {
+			severity = 'critical';
 			errorMessage = 'Captcha not loaded. Please try again later.';
 			open = true;
 		}
@@ -107,6 +113,7 @@
 
 	async function proceedWithFormSubmission() {
 		if (!captchaToken) {
+			severity = 'attention';
 			errorMessage = 'Please complete the captcha verification.';
 			open = true;
 			return;
@@ -127,10 +134,12 @@
 
 			if (!response.ok) {
 				if (response.status === 429) {
+					severity = 'critical';
 					errorMessage = 'Rate limited!';
 					open = true;
 					return;
 				} else {
+					severity = 'critical';
 					errorMessage = 'Failed to send message!';
 					open = true;
 					return;
@@ -138,6 +147,7 @@
 			}
 
 			if (response.ok == true) {
+				severity = 'success';
 				errorMessage = 'Thank you for contacting us. We will reach out to you as soon as possible.';
 				open = true;
 			}
@@ -175,7 +185,7 @@
 
 <!--Ivirius Text Editor Plus-->
 <section class="margin-section">
-	<Fluent.InfoBar id="errmessage" bind:open>{errorMessage}</Fluent.InfoBar>
+	<Fluent.InfoBar bind:severity={severity} id="errmessage" bind:open>{errorMessage}</Fluent.InfoBar>
 	<h1>
 		<Fluent.TextBox
 			placeholder="Email"
@@ -192,31 +202,21 @@
 		/>
 	</h2>
 	<h3>
-		<textarea
-			placeholder="Message"
-			style="min-height: 150px; width: 100%; box-sizing: border-box;
-			padding: 10px;
-			resize: none;
-			border: 1px solid var(--fds-control-stroke-default);
-			background-color: var(--fds-control-fill-default);
-			font-family: Arial, sans-serif;
-			border-radius: 4px;
-			color: var(--fds-text-primary);"
-			bind:value={message}
-		/>
+		<textarea placeholder="Message" bind:value={message} />
 	</h3>
 	<div id="h-captcha-container"></div>
 </section>
 
 <section class="right-section">
 	<Fluent.Button
-		style="width: 30%; float: right;"
+		variant="hyperlink"
+		style="width: auto; float: right;"
 		on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}
 	>
 		Contact Us on Discord
 	</Fluent.Button>
-	<div style="width: 5%;" />
-	<Fluent.Button style="width: 30%; float: right;" variant="accent" on:click={handleSendClick}>
+	<div style="width: 8px;" />
+	<Fluent.Button style="width: 120px; float: right;" variant="accent" on:click={handleSendClick}>
 		Send
 	</Fluent.Button>
 </section>
@@ -235,38 +235,57 @@
 		color: var(--fds-text-primary);
 	}
 
+	textarea {
+		min-height: 150px;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		resize: none;
+		border: 1px solid var(--fds-control-stroke-default);
+		background-color: var(--fds-control-fill-default);
+		font-family: Arial, sans-serif;
+		border-radius: 4px;
+		border-bottom: 1px solid var(--fds-control-strong-stroke-default);
+		color: var(--fds-text-primary);
+	}
+
 	textarea:focus {
 		/* Styles for focus state */
-		border-color: var(--fds-accent-default); /* Change border color when focused */
+		border: 1px solid var(--fds-control-stroke-default);
+		border-bottom: 2px solid var(--fds-accent-default);
 		outline: none; /* Remove default outline */
-		background-color: var(--fds-control-on-image-fill-default);
+		background: var(--fds-control-fill-input-active);
+	}
+
+	textarea:hover:not(:focus) {
+		background: var(--fds-control-fill-secondary);
 	}
 
 	/*Centered section*/
 	.centered-section {
 		text-align: center;
 		margin: 0 auto;
-		padding: 25px;
-		max-width: 650px;
+		padding: 32px;
+		max-width: 640px;
 	}
 
 	/*Right aligned section*/
 	.right-section {
 		text-align: right;
 		margin: auto;
-		padding: 25px;
-		max-width: 650px;
+		padding: 32px;
+		max-width: 640px;
 		display: flex;
 		justify-content: flex-end;
 		justify-items: flex-end;
-		margin-top: -50px;
+		margin-top: -32px;
 	}
 
 	/*Left aligned centered section*/
 	.margin-section {
 		margin: 0 auto;
-		padding: 25px;
-		max-width: 650px;
+		padding: 0px;
+		max-width: 640px;
 	}
 
 	/* hCaptcha container - for an invisible captcha we don't need special styling */
