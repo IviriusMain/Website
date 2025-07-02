@@ -156,7 +156,7 @@
 					on:click={() =>
 						(window.location.href =
 							'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
-					>Buy for $1.09</Fluent.Button
+					>Buy for $2.99</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
 			</div>
@@ -164,7 +164,7 @@
 	</div>
 
 	<div class="card">
-		<img src="./reboundPreviewCard.png" alt="Rebound 11 preview" class="card-image" />
+		<img src="./reboundPreviewCard.png" alt="Rebound preview" class="card-image" />
 		<div class="card-content">
 			<div>
 				<h2 class="card-title">Rebound</h2>
