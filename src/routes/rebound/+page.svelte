@@ -219,7 +219,7 @@
 		<Fluent.Button
 			on:click={() =>
 				(window.location.href =
-					'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.9-Beta/Rebound.Hub.Installer.zip')}
+					'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.10-Beta/ReboundHubInstaller.zip')}
 			variant="accent">Download</Fluent.Button
 		>
 		<Fluent.Button>Contribute</Fluent.Button>

@@ -78,7 +78,7 @@
 					variant="accent"
 					on:click={() =>
 						(window.location.href =
-							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.9-Beta/Rebound.Hub.Installer.zip')}
+							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.10-Beta/ReboundHubInstaller.zip')}
 					>Download</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink" on:click={() => goto('/docs/rebound/release-notes')}
