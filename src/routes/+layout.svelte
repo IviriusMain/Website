@@ -50,6 +50,7 @@
 				</div>
 			</div>
 			<div class="footer-bottom">&copy; 2020 - 2025 Ivirius™ Community. All rights reserved.</div>
+			<img src="/Zippy.png" style="width: 48px; margin-top:16px;" />
 		</footer>
 
 		<div class="navbar">

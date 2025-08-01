@@ -17,7 +17,7 @@
 	<meta name="theme-color" content="#6ba4ff" />
 
 	<!-- Open Graph Meta Tags for better previewing -->
-	<meta property="og:image" content="https://ivirius.com/homepageheader.png" />
+	<meta property="og:image" content="https://ivirius.com/CommunityBanner.png" />
 	<meta property="og:image:alt" content="Ivirius Community" />
 	<meta property="og:image:type" content="image/png" />
 </svelte:head>

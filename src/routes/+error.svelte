@@ -9,10 +9,9 @@
 	<meta name="description" content="Ivirius official website" />
 </svelte:head>
 <section>
-	<div style="height: 1000000px;"></div>
 	<h1>
 		<Fluent.ContentDialog open={true} title="Uh oh...">
-			No one's here. Try checking the URL and try again.
+			<p>No one's here. Check the URL and try again.</p>
 			<Fluent.Button variant="accent" slot="footer" on:click={() => goto('/')}
 				>Home page</Fluent.Button
 			>
