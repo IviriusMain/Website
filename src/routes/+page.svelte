@@ -22,8 +22,8 @@
 	<meta property="og:image" content="https://ivirius.com/CommunityBanner.png" />
 	<meta property="og:image:alt" content="Ivirius Community" />
 	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="630" />
+	<meta property="og:image:width" content="16000" />
+	<meta property="og:image:height" content="9000" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ivirius.com/" />
 </svelte:head>
