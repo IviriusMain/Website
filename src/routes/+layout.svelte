@@ -3,8 +3,6 @@
 	import * as Fluent from 'fluent-svelte';
 	import 'fluent-svelte/theme.css';
 	import { goto } from '$app/navigation';
-
-	let open = false;
 </script>
 
 <div class="app">
@@ -65,87 +63,47 @@
 					<div
 						style="width: 1px; height: 30px; margin-left: 15px; align-self: center; background-color: var(--fds-divider-stroke-default);"
 					></div>
-					<Fluent.Button
-						style="color: var(--fds-text-primary); height: 32px; align-self: center; align-items: center;"
-						variant="hyperlink"
-						on:click={() => goto('/')}>Home</Fluent.Button
+					<Fluent.MenuBar
+						style="color: var(--fds-text-primary);  align-self: center; align-items: center;"
 					>
-					<Fluent.Flyout placement="bottom">
-						<Fluent.Button
-							style="color: var(--fds-text-primary); height: 32px; align-self: center; margin-top: 9px; align-items: center;"
-							variant="hyperlink">Apps and Tools</Fluent.Button
-						>
-						<div
-							slot="override"
-							style="display: flex; width: 250px; background-color: var(--fds-solid-background-base); box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); border-radius: 6px; flex-direction: column; align-items: justify; padding: 4px; gap: 2px;"
-						>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() =>
-									(window.location.href =
-										'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
-							>
-								Ivirius Text Editor
-							</Fluent.Button>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() =>
-									(window.location.href =
-										'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
-							>
-								Ivirius Text Editor Plus
-							</Fluent.Button>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() => goto('/rebound')}
-							>
-								Rebound
-							</Fluent.Button>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() =>
-									(window.location.href =
-										'https://www.nuget.org/packages/Riverside.Toolkit.WinUI.Controls.Primitives/')}
-							>
-								CubeKit
-							</Fluent.Button>
-						</div>
-					</Fluent.Flyout>
-					<Fluent.Flyout placement="bottom">
-						<Fluent.Button
-							style="color: var(--fds-text-primary); height: 32px; align-self: center; margin-top: 9px; align-items: center;"
-							variant="hyperlink">Community</Fluent.Button
-						>
-						<div
-							slot="override"
-							style="display: flex; width: 250px; background-color: var(--fds-solid-background-base); box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); border-radius: 6px; flex-direction: column; align-items: justify; padding: 4px; gap: 2px;"
-						>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() => goto('/docs')}
-							>
-								Docs
-							</Fluent.Button>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-							>
-								News
-							</Fluent.Button>
-							<Fluent.Button
-								variant="hyperlink"
-								style="display: flex; flex-direction: column; align-items: flex-start; color: var(--fds-text-primary);"
-								on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}
-							>
-								Discord Server
-							</Fluent.Button>
-						</div>
-					</Fluent.Flyout>
+						<Fluent.MenuBarItem on:click={() => goto('/')}>Home</Fluent.MenuBarItem>
+						<Fluent.MenuBarItem>
+							Apps and Tools
+							<svelte:fragment slot="flyout">
+								<Fluent.MenuFlyoutItem
+									on:click={() =>
+										(window.location.href =
+											'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
+									>Ivirius Text Editor</Fluent.MenuFlyoutItem
+								>
+								<Fluent.MenuFlyoutItem
+									on:click={() =>
+										(window.location.href =
+											'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
+									>Ivirius Text Editor Plus</Fluent.MenuFlyoutItem
+								>
+								<Fluent.MenuFlyoutItem on:click={() => goto('/rebound')}
+									>Rebound</Fluent.MenuFlyoutItem
+								>
+								<Fluent.MenuFlyoutItem
+									on:click={() =>
+										(window.location.href =
+											'https://www.nuget.org/packages/Riverside.Toolkit.WinUI.Controls.Primitives/')}
+									>CubeKit</Fluent.MenuFlyoutItem
+								>
+							</svelte:fragment>
+						</Fluent.MenuBarItem>
+						<Fluent.MenuBarItem>
+							Community
+							<svelte:fragment slot="flyout">
+								<Fluent.MenuFlyoutItem on:click={() => goto('/docs')}>Docs</Fluent.MenuFlyoutItem>
+								<Fluent.MenuFlyoutItem on:click={() => goto('/news')}>News</Fluent.MenuFlyoutItem>
+								<Fluent.MenuFlyoutItem on:click={() => goto('/discord')}
+									>Discord Server</Fluent.MenuFlyoutItem
+								>
+							</svelte:fragment>
+						</Fluent.MenuBarItem>
+					</Fluent.MenuBar>
 				</div>
 			</div>
 			<Fluent.Button

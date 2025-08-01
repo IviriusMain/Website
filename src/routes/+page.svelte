@@ -71,7 +71,7 @@
 	<div class="header-content">
 		<!-- Left Side (Title, Subtitle, Buttons) -->
 		<div class="header-left">
-			<h1 class="header-title">Rebound v0.0.9</h1>
+			<h1 class="header-title">Rebound v0.0.10</h1>
 			<p class="header-subtitle">The best of Rebound in a brand new release.</p>
 			<div class="header-buttons">
 				<Fluent.Button

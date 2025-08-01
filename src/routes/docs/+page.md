@@ -3,58 +3,61 @@
     import * as Fluent from "fluent-svelte";
     import "fluent-svelte/theme.css";
 
-  import Highlight, { LineNumbers } from "svelte-highlight";
-  // direct import (recommended)
-  import csharp from "svelte-highlight/languages/csharp";
-  import "svelte-highlight/styles/onedark.css";
-
-    let code = `
-    public MainWindow()
-    {
-        this.InitializeComponent();
-        RootFrame.Navigate(typeof(ShellPage));
-        CheckWindowProperties();
-        this.ExtendsContentIntoTitleBar = true;
-        this.AppWindow.TitleBar.PreferredHeightOption = Microsoft.UI.Windowing.TitleBarHeightOption.Collapsed;
-        this.AppWindow.TitleBar.ButtonHoverBackgroundColor = Windows.UI.Color.FromArgb(25, 200, 200, 200);
-        this.AppWindow.TitleBar.ButtonPressedBackgroundColor = Windows.UI.Color.FromArgb(15, 200, 200, 200);
-        this.AppWindow.Title = "Rebound Hub";
-        this.SetIcon($"{AppContext.BaseDirectory}\\Assets\\AppIcons\\ReboundHub.ico");
-
-        _msgMonitor ??= new WindowMessageMonitor(this);
-        _msgMonitor.WindowMessageReceived -= Event;
-        _msgMonitor.WindowMessageReceived += Event;
-
-        if (isCrimsonUIEnabled == true)
-        {
-            this.AppWindow.TitleBar.PreferredHeightOption = Microsoft.UI.Windowing.TitleBarHeightOption.Collapsed;
-            CrimsonUIButtons.Visibility = Visibility.Visible;
-            LoadBounds();
-        }
-        mon = new RegistryMonitor(@"Software\Microsoft\Windows\DWM");
-        mon.Start();
-        var x = new ThemeListener();
-        x.ThemeChanged += X_ThemeChanged;
-
-        Rehook();
-        CheckWindow();
-    }`;
 </script>
 
-# Docs
+# Welcome to Ivirius™ Community Documentation
 
-Read docs about various tools and APIs from Ivirius and less known features in UWP and Windows App SDK.
+✨ *Grow together, develop for the people.*
 
-Here you can find tutorials for pushing the boundaries of WinUI 3 and UWP by enabling snap layouts on a custom title bar button, building an uncontained UWP app, and completely removing its title bar, etc.
+**Since 2020**, Ivirius™ Community has delivered open-source tools and applications that elevate the Windows 10 and 11 experience through modern, native development in C#. At the heart of our ecosystem is **Rebound** - the flagship Windows customization framework built with **WinUI 3 and the Community Toolkit**. We also maintain additional programs like **Ivirius Text Editor Plus** and various other tools, all designed to be powerful, streamlined, and user-centric.
 
-<Fluent.InfoBar severity="attention" open title="WinUI 3 and UWP">Samples and code for WinUI 3 and UWP featured in the following articles are gathered from multiple sources and the code may use external libraries.</Fluent.InfoBar>
+We are a **community of passionate developers** dedicated to enhancing the Windows experience through modern, fluent, and consistent interfaces. While some flagship projects, such as **Ivirius Text Editor** and **Ivirius Text Editor Plus**, are proprietary and commercial, the core of our ecosystem - including projects like **Rebound** - remains **open source**, **free to use**, and **actively maintained** with contributions from developers worldwide.
 
-<Fluent.InfoBar severity="attention" open title="Recommended packages">We recommend you use WinUIEx and WinUICommunity NuGet packages for your WinUI 3 apps.</Fluent.InfoBar>
+---
 
-<Fluent.InfoBar severity="caution" open title="Warning!">This page is not finished yet.</Fluent.InfoBar>
+# FAQ
 
-  <div style="border: 1px solid rgba(128, 128, 128, 0.5);">
-<Highlight language={csharp} {code} let:highlighted>
-  <LineNumbers {highlighted} />
-</Highlight>
-  </div>
+<Fluent.InfoBar severity="attention" closable={false} title="Do your apps work on Linux?" message="No, our applications do not support Linux and cannot run under Wine. Projects that rely heavily on Windows-exclusive APIs, such as Rebound, will not be ported to Linux. However, general-purpose apps like Ivirius Text Editor may have Linux builds in the future using cross-platform frameworks like Uno Platform." />
+<p/>
+
+<Fluent.InfoBar severity="attention" closable={false} title="What is Zippy and where did he come from?" message="Zippy is our mascot featured primarily in AI-related products and branding. Originally created as an April Fools’ joke in 2021, community enthusiasm led us to keep him around. Today, Zippy appears throughout our Discord server and in Ivirius Text Editor Plus." />
+<p/>
+
+<Fluent.InfoBar severity="attention" closable={false} title="Why is Ivirius Text Editor closed source?" message="Ivirius Text Editor is closed source because both free and paid versions share a single codebase. While using a restrictive license could help prevent piracy of the paid version, the lack of strong legal protections against piracy in Romania (our country of publishing) makes enforcement impractical at this time." />
+<p/>
+
+<Fluent.InfoBar severity="attention" closable={false} title="Is Rebound malware?" message="No, Rebound is not malware. Some antivirus software may flag it due to its potentially invasive (not clearly invasive) nature, but the project is entirely free, open source, and hosted on GitHub. These flags are typically false positives. You can always review the source code yourself before installing to ensure your trust." />
+<p/>
+
+<Fluent.InfoBar
+  severity="attention"
+  closable={false}
+  title="Is Rebound dangerous or invasive?"
+  message="No, Rebound is not dangerous or inherently invasive. It uses well-understood and safe modding techniques such as IFEO overrides (with fallbacks), window hooks, and named pipes with hardcoded paths. These methods help maintain compatibility with Windows updates and third-party modifications. While no mod can guarantee 100% stability, Rebound is generally considered safer and more reliable than most alternatives." />
+
+<p/>
+
+<Fluent.InfoBar
+  severity="attention"
+  closable={false}
+  title="Do your apps work on Windows 10?"
+  message="Technically, yes - most of our apps do run on Windows 10. However, we do not actively test or optimize them for that platform. Since we aim to take full advantage of the latest Windows APIs and design systems, we recommend using Windows 11 for the best experience and long-term stability." />
+
+<p/>
+
+<Fluent.InfoBar
+  severity="attention"
+  closable={false}
+  title="Why do you avoid using Acrylic?"
+  message="We intentionally avoid using Acrylic for window backdrops due to its high GPU resource consumption and outdated appearance. While this is partly subjective, official WinUI design guidelines also recommend using Mica instead. Additionally, we’ve found that the term 'Acrylic' often sparks unproductive debates in the community, so we’ve chosen to discourage or restrict its use in certain spaces to keep conversations focused and consistent." />
+
+<style>
+
+  a {
+    color: var(--fds-accent-default);         /* Text color */
+    text-decoration: none;  /* Removes underline */
+    font-size: 16px;        /* Font size */
+    font-family: Arial, sans-serif;  /* Font family */
+}
+
+</style>
