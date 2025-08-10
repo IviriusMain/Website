@@ -1,40 +1,68 @@
-# Incomplete readme
+<!-- Title -->
+<h1 align="center">
+  <span style="display:inline-block; vertical-align:middle;">
+    <img width="32" height="32" alt="AppIcon" src="https://github.com/user-attachments/assets/351cba16-ae0f-46b8-951c-a0b50e17af51" />
+  </span>
+  <span style="display:inline-block; vertical-align:middle;">
+    <strong>Ivirius Community Website</strong>
+  </span>
+</h1>
 
-# create-svelte
+<!-- Tagline -->
+<p align="center">
+  <em>The official website of Ivirius Community.</em>
+</p>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Learn more about our projects and goals, read docs about various apps and tools, and easily contact us through our official website. Built with [Fluent Svelte](https://fluent-svelte.vercel.app/).
 
-## Creating a project
+<!-- Banner -->
+<img width="1919" alt="image" src="https://github.com/user-attachments/assets/c753c98d-d405-4dcd-ad6a-b256deddee8e" />
 
-If you're seeing this, you've probably already done this step. Congrats!
+<!-- Empty Space -->
+<p/>
 
+## 📋 Prerequisites
+
+Before running this project, make sure you have:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) (optional)
+
+## 🧑‍💻 Building and Testing the Website
+
+While the Ivirius Community Website is open source, it’s primarily maintained by our core team. If you’d like to run it locally - for development, contributing, experimentation, or curiosity - you can do so with the following steps:
+
+### 1. Install dependencies
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+### 2. Start the development server
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
+> [!TIP]
+> Press `q` in the terminal to stop the server.
 
-## Building
+### 3. Open in your browser
+The local URL will appear in your terminal output (typically http://localhost:5173/).
 
-To create a production version of your app:
-
+### 4. (Optional) Create a production build
 ```bash
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## 🙋 Got feedback?
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+We’d love to hear from you! If you want to report an issue or share suggestions, reach out to us via:
+
+* Our [official website contact page](https://ivirius.com/contact/)
+* Email: [ivirius.helpdesk@gmail.com](mailto:ivirius.helpdesk@gmail.com)
+* [Discord server](https://ivirius.com/discord/)
+
+---
+
+<img width="400" alt="Zippy" src="https://github.com/user-attachments/assets/c1b73b22-37fc-49b8-b0f6-9a3f417b34a3" />
