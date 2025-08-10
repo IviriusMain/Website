@@ -84,7 +84,7 @@
 					variant="accent"
 					on:click={() =>
 						(window.location.href =
-							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.10-Beta/ReboundHubInstaller.zip')}
+							'https://ivirius.com/download/rebound/')}
 					>Download</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink" on:click={() => goto('/docs/rebound/release-notes')}
@@ -186,7 +186,7 @@
 					variant="accent"
 					on:click={() =>
 						(window.location.href =
-							'https://github.com/IviriusCommunity/Rebound/releases/download/v0.0.6-Beta/Rebound.Hub.Installer.exe')}
+							'https://ivirius.com/download/rebound/')}
 					disabled={false}>Download</Fluent.Button
 				>
 				<Fluent.Button
