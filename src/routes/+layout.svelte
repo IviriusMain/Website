@@ -33,7 +33,7 @@
 				<div>
 					<h3>Social Links</h3>
 					<p>
-						<a href="https://dsc.gg/ivirius">Discord</a>
+						<a href="https://ivirius.com/discord">Discord</a>
 						|
 						<a href="https://www.youtube.com/@ivirius-official">YouTube</a>
 						|
@@ -125,21 +125,6 @@
 		min-height: 100vh;
 	}
 
-	/* Light mode */
-	@media (prefers-color-scheme: light) {
-		:global(body) {
-			/*Background image*/
-			background-image: url('https://ivirius.com/MicaLight.png');
-		}
-	}
-
-	/* Dark mode */
-	@media (prefers-color-scheme: dark) {
-		:global(body) {
-			/*Background image*/
-			background-image: url('https://ivirius.com/MicaDark.png');
-		}
-	}
 	.footer {
 		background: var(--fds-solid-background-tertiary);
 		padding: 40px 20px;
