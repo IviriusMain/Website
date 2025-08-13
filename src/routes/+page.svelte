@@ -73,40 +73,6 @@
 	</div>
 </div>
 
-<header id="main-content" class="main-header">
-	<div class="header-content">
-		<!-- Left Side (Title, Subtitle, Buttons) -->
-		<div class="header-left">
-			<h1 class="header-title">Rebound v0.0.10</h1>
-			<p class="header-subtitle">The best of Rebound in a brand new release.</p>
-			<div class="header-buttons">
-				<Fluent.Button
-					variant="accent"
-					on:click={() =>
-						(window.location.href =
-							'https://ivirius.com/download/rebound/')}
-					>Download</Fluent.Button
-				>
-				<Fluent.Button variant="hyperlink" on:click={() => goto('/docs/rebound/release-notes')}
-					>Read more</Fluent.Button
-				>
-			</div>
-		</div>
-
-		<!-- Right Side (Image) -->
-		<div class="header-right">
-			<img
-				src="./Rebound-v0.0.9-Beta.png"
-				alt="Reboud Hero Demo Visual"
-				class="header-image"
-				loading="lazy"
-				width="1200"
-				height="630"
-			/>
-		</div>
-	</div>
-</header>
-
 <h1 class="center-text">Welcome!</h1>
 
 <p class="center-text description">
