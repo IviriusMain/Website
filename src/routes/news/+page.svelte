@@ -100,12 +100,12 @@
 
 <div class="cards-container">
 	{#each cards as card}
-		<a class="card" href={card.link} aria-label={`Open ${card.title}`}>
+		<div class="card" on:click={() => goto(card.link)} aria-label={`Open ${card.title}`}>
 			<img src={card.image} alt={card.title} class="card-image" />
 			<div class="card-content">
 				<h2 class="card-title">{card.title}</h2>
 			</div>
-		</a>
+</div>
 	{/each}
 </div>
 

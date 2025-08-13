@@ -4,15 +4,44 @@
   export let title = "";
   export let avatar = "";
   export let publisher = "";
-  export let date = "";
+  export let date = ""; // ISO string
   export let header_image = "";
+
+  function formatDateFriendly(iso: string): string {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso; // fallback if parsing fails
+
+    const day = d.getDate();
+    const month = d.toLocaleString("en-US", { month: "long" });
+    const year = d.getFullYear();
+
+    // ordinal suffix
+    const suffix = (n: number) => {
+      if (n >= 11 && n <= 13) return "th";
+      switch (n % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+      }
+    };
+
+    return `${day}${suffix(day)} of ${month} ${year}`;
+  }
+
+  const friendlyDate = formatDateFriendly(date);
 
   function sharePage() {
     if (navigator.share) {
-      navigator.share({ title: document.title, url: window.location.href })
+      navigator
+        .share({ title: document.title, url: window.location.href })
         .catch(err => console.log("Share cancelled", err));
     } else {
-      alert("Your browser does not support native sharing. Copy the URL instead: " + window.location.href);
+      alert(
+        "Your browser does not support native sharing. Copy the URL instead: " +
+          window.location.href
+      );
     }
   }
 </script>
@@ -35,7 +64,7 @@
     <img src={avatar} alt="Avatar" class="avatar" />
     <Fluent.TextBlock>{publisher}</Fluent.TextBlock>
     <Fluent.TextBlock>•</Fluent.TextBlock>
-    <Fluent.TextBlock style="opacity:0.5;">{date}</Fluent.TextBlock>
+    <Fluent.TextBlock style="opacity:0.5;">{friendlyDate}</Fluent.TextBlock>
     <Fluent.Button variant="hyperlink" on:click={sharePage}>Share</Fluent.Button>
   </div>
 </div>
@@ -55,6 +84,10 @@
     text-decoration: none;
     font-size: 16px;
     font-family: Arial, sans-serif;
+  }
+
+  :global(.markdown-content) {
+    font-size: 16px;
   }
 
   :global(.markdown-content img), img {

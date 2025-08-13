@@ -4,7 +4,6 @@ avatar: "/Ivirius.png"
 publisher: "Ivirius"
 date: "2025-08-13"
 header_image: "https://github.com/user-attachments/assets/c753c98d-d405-4dcd-ad6a-b256deddee8e"
-offset: 0
 ---
 
 <script lang="ts">
