@@ -1,26 +1,73 @@
 <script lang="ts">
-	//Imports
+	// Imports
 	import * as Fluent from 'fluent-svelte';
 	import 'fluent-svelte/theme.css';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
+
+	type NewsMeta = {
+		title: string;
+		date?: string;           // ISO: "2025-08-14"
+		header_image?: string;   // card/header image
+		avatar?: string;
+		publisher?: string;
+	};
+
+	type NewsItem = NewsMeta & { slug: string };
 
 	let headerTitle = '';
 	let headerImage = '';
-	let buttonText = '';
+	let buttonText = 'Read more';
 	let buttonLink = '';
 	let cards: { title: string; image: string; link: string }[] = [];
 
-	onMount(async () => {
-		const res = await fetch('/news/news.json');
-		const data = await res.json();
+	// Eagerly import all markdown pages with front-matter
+	const modules = import.meta.glob('/src/routes/news/*/+page.md', { eager: true }) as Record<string, any>;
 
-		headerTitle = data.header.title;
-		headerImage = data.header.image;
-		buttonText = data.header.buttonText;
-		buttonLink = data.header.buttonLink;
-		cards = data.cards;
-	});
+	function pathToSlug(path: string) {
+		// "/src/routes/news/welcome/+page.md" -> "welcome"
+		return path.replace('/src/routes/news/', '').replace('/+page.md', '');
+	}
+
+	function parseDate(iso?: string) {
+		const t = iso ? Date.parse(iso) : NaN;
+		return Number.isNaN(t) ? 0 : t;
+	}
+
+	// Build items immediately (works in SSR too, no onMount needed)
+	const allItems: NewsItem[] = Object.entries(modules)
+		.map(([path, mod]) => {
+			const meta: NewsMeta = mod?.metadata ?? mod?.frontmatter ?? {};
+			return {
+				slug: pathToSlug(path),
+				title: meta.title ?? '(untitled)',
+				date: meta.date,
+				header_image: meta.header_image,
+				avatar: meta.avatar,
+				publisher: meta.publisher
+			};
+		})
+		// keep only items with a title and a valid-ish date (you can relax this if you like)
+		.filter((i) => i.title);
+
+	// Sort newest → oldest by ISO date
+	allItems.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+	// Header = newest
+	const [head, ...rest] = allItems;
+
+	if (head) {
+		headerTitle = head.title;
+		headerImage = head.header_image || '';
+		buttonLink = `/news/${head.slug}`;
+	}
+
+	// Cards: oldest → newest (so older items render first, newer appear later in the grid/flow)
+	const ordered = rest.slice().reverse();
+	cards = ordered.map((i) => ({
+		title: i.title,
+		image: i.header_image || '',
+		link: `/news/${i.slug}`
+	}));
 </script>
 
 <!--Head-->
@@ -29,7 +76,6 @@
 	<meta name="description" content="Ivirius Community news" />
 	<meta content="Ivirius Community" name="author" />
 	<meta content="#6ba4ff" name="theme-color" />
-
 	<meta property="og:image" content="https://ivirius.com/homepageheader.png" />
 	<meta property="og:image:alt" content="Ivirius Community" />
 	<meta property="og:image:type" content="image/png" />
@@ -41,25 +87,25 @@
 		<div class="header-left">
 			<h1 class="header-title">{headerTitle}</h1>
 			<div class="header-buttons">
-				<Fluent.Button variant="accent" on:click={() => (window.location.href = buttonLink)}>
+				<Fluent.Button variant="accent" on:click={() => goto(buttonLink)}>
 					{buttonText}
 				</Fluent.Button>
 			</div>
 		</div>
 		<div class="header-right">
-			<img src={headerImage} class="header-image" loading="lazy" width="1200" height="630" />
+			<img src={headerImage} alt={headerTitle} class="header-image" loading="lazy" width="1200" height="630" />
 		</div>
 	</div>
 </header>
 
 <div class="cards-container">
 	{#each cards as card}
-		<div class="card" on:click={() => (window.location.href = card.link)}>
+		<a class="card" href={card.link} aria-label={`Open ${card.title}`}>
 			<img src={card.image} alt={card.title} class="card-image" />
 			<div class="card-content">
 				<h2 class="card-title">{card.title}</h2>
 			</div>
-		</div>
+		</a>
 	{/each}
 </div>
 
