@@ -56,7 +56,7 @@
 		<div class="navbar">
 			<div class="navbar-bkg"></div>
 			<div class="menu">
-				<img src="./favicon.png" style="width: 50px; align-self: center;" alt="" />
+				<img src="./favicon.png" style="width: 50px; align-self: center; margin-left: 0px; margin-right: 0px;" alt="" />
 				<p style="align-self: center; font-size: 20px; margin-bottom: 4px; font-weight: 500;">
 					Ivirius Community
 				</p>
