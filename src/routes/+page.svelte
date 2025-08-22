@@ -1,11 +1,27 @@
-<script>
+<script lang="ts">
 	// Import Fluent Svelte components and theme
 	import * as Fluent from 'fluent-svelte';
 	import 'fluent-svelte/theme.css';
 	import { goto } from '$app/navigation';
-	function scrollToSection() {
-		const target = document.getElementById('main-content');
-		target?.scrollIntoView({ behavior: 'smooth' });
+function scrollToSection() {
+  const target = document.getElementById('main-content');
+  if (!target) return;
+
+  const top = target.getBoundingClientRect().top + window.scrollY; // absolute position
+  window.scrollTo({
+    top: top - 100, // 80px above
+    behavior: 'smooth'
+  });
+}
+
+	let mouseX = 50; // percent
+	let mouseY = 50;
+
+	function handleMouseMove(event: MouseEvent) {
+		const el = event.currentTarget as HTMLElement;
+		const rect = el.getBoundingClientRect();
+		mouseX = ((event.clientX - rect.left) / rect.width) * 100;
+		mouseY = ((event.clientY - rect.top) / rect.height) * 100;
 	}
 </script>
 
@@ -29,51 +45,57 @@
 </svelte:head>
 
 <div class="hero-wrapper">
-	<img src="/WallpaperDark.png" alt="bg" class="background" />
+	<main
+		class="landing-page"
+		on:mousemove={handleMouseMove}
+		style="--mouse-x:{mouseX}%; --mouse-y:{mouseY}%"
+	>
+		<!-- Blurred background layer -->
+		<div class="background-layer"></div>
 
-	<!-- Corner Screenshots -->
-	<img src="/runBoxScreenshot.png" class="corner corner-tl" />
-	<img src="/winverScreenshot.png" class="corner corner-tr" />
-	<img src="/diskCleanupScreenshot.png" class="corner corner-bl" />
-	<img src="/textEditorScreenshot.png" class="corner corner-br" />
+		<!-- All interactive/content elements -->
+		<div class="landing-content">
+			<div class="glow"></div>
 
-	<div class="glass-card">
-		<div class="title-bar">
-			<span>About us</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				style="fill: var(--fds-text-primary); width: 12px; height: 12px; margin-right:8px;"
-			>
-				<path
-					d="M 10 11.416016 L 1.708984 19.707031 C 1.513672 19.902344 1.279297 20 1.005859 20 C 0.719401 20 0.480143 19.903971 0.288086 19.711914 C 0.096029 19.519857 0 19.2806 0 18.994141 C 0 18.720703 0.097656 18.486328 0.292969 18.291016 L 8.583984 10 L 0.292969 1.708984 C 0.097656 1.513672 0 1.276043 0 0.996094 C 0 0.859375 0.026042 0.729168 0.078125 0.605469 C 0.130208 0.481771 0.201823 0.375977 0.292969 0.288086 C 0.384115 0.200195 0.491536 0.130209 0.615234 0.078125 C 0.738932 0.026043 0.869141 0 1.005859 0 C 1.279297 0 1.513672 0.097656 1.708984 0.292969 L 10 8.583984 L 18.291016 0.292969 C 18.486328 0.097656 18.723957 0 19.003906 0 C 19.140625 0 19.269205 0.026043 19.389648 0.078125 C 19.51009 0.130209 19.615885 0.201824 19.707031 0.292969 C 19.798176 0.384115 19.869791 0.48991 19.921875 0.610352 C 19.973957 0.730795 20 0.859375 20 0.996094 C 20 1.276043 19.902344 1.513672 19.707031 1.708984 L 11.416016 10 L 19.707031 18.291016 C 19.902344 18.486328 20 18.720703 20 18.994141 C 20 19.130859 19.973957 19.261068 19.921875 19.384766 C 19.869791 19.508463 19.799805 19.615885 19.711914 19.707031 C 19.624023 19.798178 19.518229 19.869791 19.394531 19.921875 C 19.270832 19.973959 19.140625 20 19.003906 20 C 18.723957 20 18.486328 19.902344 18.291016 19.707031 Z"
-				/>
-			</svg>
-		</div>
-
-		<div class="content">
-			<div style="display:flex; flex-direction:row; align-items: center;">
-				<img src="/favicon.png" alt="logo" class="logo" />
-				<p style="margin-left: 24px; margin-bottom: 24px; font-size: 32px;">Ivirius Community</p>
+			<div class="logo-row">
+				<img src="./favicon.png" alt="Ivirius Logo" />
+				<p>Ivirius Community</p>
 			</div>
-			<div style="background-color: var(--fds-control-fill-default); padding: 16px 32px;">
-				<p style="text-align: left;">
-					We make and contribute to the apps that make Windows 11 truly fluent and consistent.
-				</p>
-				<p style="text-align: left;">
-					Since 2020, we've been building, designing, and improving tools such as Ivirius Text
-					Editor and Rebound for you to have the best experience with Windows 11 and WinUI.
-				</p>
+
+			<h1 class="shimmer-text">Fluent design, brought to you everywhere.</h1>
+			<p class="sub-text">Grow together, develop for the people.</p>
+
+			<div class="button-row">
+				<Fluent.Button variant="accent" on:click={() => goto('/download/ivirius-text-editor-plus')}
+					>Ivirius Text Editor Plus</Fluent.Button
+				>
+				<Fluent.Button>Ivirius Text Editor</Fluent.Button>
+				<Fluent.Button>Rebound</Fluent.Button>
+			</div>
+			<div class="button-row">
+				<Fluent.Button on:click={() => scrollToSection()} variant="hyperlink">
+					<div class="button-row" style="margin-top: 4px; margin-bottom: 4px;">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 20 20"
+							width="16"
+							height="16"
+							fill="currentColor"
+							style="margin-top: auto; margin-bottom: auto; margin-right: 4px;"
+						>
+							<path
+								d=" M 18.339844 10.830078 C 18.339844 11.057943 18.255207 11.256511 18.085938 11.425781 L 9.794922 19.716797 C 9.703775 19.807943 9.609375 19.87793 9.511719 19.926758 C 9.414062 19.975586 9.30013 20 9.169922 20 C 8.935547 20 8.736979 19.918619 8.574219 19.755859 L 0.244141 11.425781 C 0.08138 11.263021 0 11.064453 0 10.830078 C 0 10.602214 0.08138 10.406901 0.244141 10.244141 C 0.406901 10.081381 0.602214 10 0.830078 10 C 1.064453 10 1.263021 10.081381 1.425781 10.244141 L 8.330078 17.148438 L 8.330078 0.830078 C 8.330078 0.712891 8.352864 0.603842 8.398438 0.50293 C 8.44401 0.40202 8.504231 0.314129 8.579102 0.239258 C 8.653971 0.164389 8.741861 0.105795 8.842773 0.063477 C 8.943685 0.02116 9.052734 0 9.169922 0 C 9.397786 0 9.593099 0.081381 9.755859 0.244141 C 9.918619 0.406902 10 0.602215 10 0.830078 L 10 17.158203 L 16.914062 10.244141 C 17.076822 10.081381 17.272135 10 17.5 10 C 17.617188 10 17.726236 10.021159 17.827148 10.063477 C 17.928059 10.105795 18.015949 10.164389 18.09082 10.239258 C 18.165689 10.314128 18.22591 10.402019 18.271484 10.50293 C 18.317057 10.603842 18.339844 10.712891 18.339844 10.830078 Z"
+							/>
+						</svg>
+						<Fluent.TextBlock>Ready to dive in?</Fluent.TextBlock>
+					</div>
+				</Fluent.Button>
 			</div>
 		</div>
-
-		<div class="bottom-bar">
-			<Fluent.Button variant="accent" on:click={scrollToSection}>Get started</Fluent.Button>
-		</div>
-	</div>
+	</main>
 </div>
 
-<h1 class="center-text">Welcome!</h1>
+<h1 id="main-content" class="center-text">Welcome!</h1>
 
 <p class="center-text description">
 	Learn more about our products, community, and the people that help shape them!
@@ -141,18 +163,15 @@
 			<div>
 				<h2 class="card-title">Rebound</h2>
 				<p class="card-description">
-					Make your Windows truly consistent with Rebound. The first safe FOSS Windows mod in the
-					Microsoft Store with WinUI 3 applets to replace every deprecated Windows tool. Featuring
-					apps like Files, Ambie, Character Map UWP, Lively Wallpaper, Wino Mail, and so many
-					others!
+					Make your Windows truly consistent with Rebound. The first safe FOSS Windows mod with
+					WinUI 3 applets to replace every deprecated Windows tool. Featuring apps like Files,
+					Ambie, Character Map UWP, Lively Wallpaper, Wino Mail, and so many others!
 				</p>
 			</div>
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() =>
-						(window.location.href =
-							'https://ivirius.com/download/rebound/')}
+					on:click={() => (window.location.href = 'https://ivirius.com/download/rebound/')}
 					disabled={false}>Download</Fluent.Button
 				>
 				<Fluent.Button
@@ -163,29 +182,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!--<div class="card">
-		<img src="./homepageheader.png" alt="NuGet Gallery Preview" class="card-image" />
-		<div class="card-content">
-			<div>
-				<h2 class="card-title">CubeKit</h2>
-				<p class="card-description">
-					Collaboration project with FireCube and Lamparter: the best toolkit for WinUI apps
-					featuring an XAML title bar, the popular GlowUI library, and a lot of useful helpers.
-				</p>
-			</div>
-			<div class="card-footer">
-				<Fluent.Button
-					variant="accent"
-					on:click={() =>
-						(window.location.href =
-							'https://www.nuget.org/packages/Riverside.Toolkit.WinUI.Controls.Primitives/')}
-					>NuGet Gallery</Fluent.Button
-				>
-				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
-			</div>
-		</div>
-	</div>-->
 
 	<div class="card">
 		<img src="./discordPreviewCard.png" alt="Discord Server Card" class="card-image" />
@@ -200,7 +196,7 @@
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}>Join</Fluent.Button
+					on:click={() => (window.location.href = 'https://ivirius.com/discord/')}>Join</Fluent.Button
 				>
 			</div>
 		</div>
@@ -216,94 +212,6 @@
 	:global(body) {
 		background-color: var(--fds-solid-background-base);
 		color: var(--fds-text-primary);
-	}
-
-	/* Main Header Styles */
-	.main-header {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--fds-control-fill-default);
-	}
-
-	.header-content {
-		display: flex;
-		justify-content: space-between;
-		justify-self: center;
-		width: 100%;
-	}
-
-	.header-left {
-		flex: 1;
-		max-width: 50%;
-		margin-left: 50px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		align-self: center;
-	}
-
-	.header-title {
-		font-size: 2.5rem;
-		margin-bottom: -10px;
-	}
-
-	.header-subtitle {
-		font-size: 1.25rem;
-		margin-bottom: 40px;
-	}
-
-	.header-buttons {
-		display: flex;
-		gap: 15px;
-	}
-
-	.header-right {
-		flex: 1;
-		max-width: 50%;
-		height: 600px;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.header-image {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-
-	/* Responsiveness: Stacking and centering elements on smaller screens */
-	@media (max-width: 768px) {
-		.header-content {
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-		}
-
-		.header-left {
-			max-width: 100%;
-			margin-bottom: 20px;
-			margin-left: 0px;
-			align-items: center;
-			text-align: center;
-		}
-
-		.header-buttons {
-			justify-content: center;
-			margin-top: -20px;
-			gap: 15px;
-		}
-
-		.header-right {
-			max-width: 100%;
-			height: 300px;
-		}
-
-		.header-image {
-			object-fit: cover;
-			width: 100%;
-			height: 100%;
-		}
 	}
 
 	/* Centered Text */
@@ -349,6 +257,7 @@
 		width: 100%;
 		height: 200px;
 		object-fit: cover;
+		border-radius: 0px;
 	}
 
 	.card-content {
@@ -381,86 +290,14 @@
 		align-items: center;
 	}
 
-	h1 {
-		font-size: 3rem;
-		margin-bottom: 1rem;
-	}
-
-	p {
-		margin-bottom: 1.5rem;
-		font-size: 1.2rem;
-	}
 	.hero-wrapper {
 		position: relative;
-		height: calc(100vh - 60px);
+		height: calc(100vh + 20px);
+		margin-top: -80px;
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.background {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		filter: blur(20px) brightness(0.6);
-		z-index: -10;
-	}
-
-	.corner {
-		position: absolute;
-		width: 240px;
-		opacity: 0.9;
-		filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
-		transition: transform 0.3s ease;
-	}
-
-	.corner:hover {
-		transform: scale(1.05) rotate(0deg);
-	}
-
-	.corner-tl {
-		top: 2rem;
-		left: 2rem;
-		transform: rotate(-8deg);
-	}
-	.corner-tr {
-		top: 2rem;
-		right: 2rem;
-		transform: rotate(6deg);
-	}
-	.corner-bl {
-		bottom: 2rem;
-		left: 2rem;
-		transform: rotate(5deg);
-	}
-	.corner-br {
-		bottom: 2rem;
-		right: 2rem;
-		transform: rotate(-5deg);
-		width: 320px;
-	}
-
-	.glass-card {
-		background: var(--fds-control-fill-input-active); /* translucent background */
-		backdrop-filter: blur(100px); /* blur behind */
-		-webkit-backdrop-filter: blur(100px); /* Safari support */
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 8px;
-		text-align: center;
-		max-width: 500px;
-		z-index: 10;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-		transition: transform 0.3s ease;
-	}
-
-	.glass-card:hover {
-		transform: scale(1.02);
-	}
-	.logo {
-		height: 60px;
-		margin-bottom: 1rem;
 	}
 
 	h1 {
@@ -474,43 +311,170 @@
 		opacity: 0.9;
 	}
 
-	.title-bar {
-		padding: 8px 12px;
+	.landing-page {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		border-top-left-radius: 8px;
-		border-top-right-radius: 8px;
-		user-select: none;
+		justify-content: center;
+		background: #000;
 	}
 
-	.content {
-		margin-top: 32px;
+	@media (prefers-color-scheme: light) {
+		.landing-page {
+			background: #fff;
+		}
+	}
+
+	/* Blurred background layer */
+	.background-layer {
+		position: absolute;
+		inset: 0;
+		background-image: url('/home-page/FluidTexturesHomePage.png'); /* correct path */
+		background-size: cover;
+		background-position: center;
+		filter: blur(80px);
+		opacity: 0.25;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	/* Wrapper for all content above the background */
+	.landing-content {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
 	}
 
-	.logo {
-		width: 80px;
-		height: 80px;
-		object-fit: contain;
+	/* Logo row */
+	.logo-row {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: -16px;
 	}
 
-	.content p {
-		text-align: center;
-		font-size: 1rem;
-		opacity: 0.85;
+	.logo-row img {
+		width: 50px;
+		height: auto;
+	}
+
+	.logo-row p {
+		font-size: 20px;
+		font-weight: 650;
 		margin: 0;
 	}
 
-	.bottom-bar {
-		border-bottom-left-radius: 8px;
-		border-bottom-right-radius: 8px;
-		padding: 24px;
+	/* Button row */
+	.button-row {
 		display: flex;
-		justify-content: flex-end;
-		background: var(--fds-control-on-image-fill-default);
+		gap: 8px;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 16px;
+	}
+
+	/* Theme variables scoped to the landing page */
+	.landing-page {
+		--shimmer-gradient: linear-gradient(90deg, #ffffff, #bae6ff, #8b96ff, #9dfff2);
+		--subtext-color: rgba(255, 255, 255, 0.7);
+		--shadow-color: rgba(0, 0, 0, 0.6);
+	}
+
+	/* Light mode overrides */
+	@media (prefers-color-scheme: light) {
+		.landing-page {
+			--shimmer-gradient: linear-gradient(90deg, #000000, #3f4681, #222222, #005757);
+			--subtext-color: rgba(0, 0, 0, 0.7);
+			--shadow-color: rgba(255, 255, 255, 0.6);
+		}
+	}
+
+	.shimmer-text {
+		font-size: 4.5rem;
+		font-weight: 600;
+		position: relative;
+		text-align: center;
+
+		/* Gradient text */
+		background: var(--shimmer-gradient);
+		background-size: 300% 300%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: shimmer 8s linear infinite;
+		z-index: 2;
+	}
+
+	/* Shadow pseudo-element behind the text */
+	.shimmer-text::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: var(--shadow-color);
+		z-index: 1;
+		filter: blur(10px); /* optional soft shadow */
+		transform: translate(var(--shadow-x, 0px), var(--shadow-y, 0px));
+		pointer-events: none;
+	}
+
+	/* Shimmer animation */
+	@keyframes shimmer {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	/* Subtext */
+	.sub-text {
+		font-size: 1.5rem;
+		color: var(--subtext-color);
+		margin-top: 16px;
+		z-index: 2;
+	}
+
+	/* Glowing orb behind text */
+	.glow {
+		position: absolute;
+		width: 400px;
+		height: 400px;
+		border-radius: 50%;
+		pointer-events: none;
+		background: radial-gradient(
+			circle at var(--mouse-x) var(--mouse-y),
+			rgba(15, 167, 255, 0.4) 0%,
+			transparent 80%
+		);
+		filter: blur(120px);
+		transform: translate(-50%, -50%);
+		top: var(--mouse-y);
+		left: var(--mouse-x);
+		z-index: 1;
+		animation: orbPulse 16s ease-in-out infinite;
+	}
+
+	@keyframes orbPulse {
+		0%,
+		100% {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 0.6;
+		}
+		50% {
+			transform: translate(-50%, -50%) scale(2.5);
+			opacity: 0.9;
+		}
 	}
 </style>

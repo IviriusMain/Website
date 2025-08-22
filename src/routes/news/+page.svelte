@@ -184,6 +184,35 @@
 		border: 1px solid var(--fds-card-stroke-default);
 	}
 
+@media (max-width: 800px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center; /* centers content horizontally */
+        max-width: 90%; /* optional: reduce width on smaller screens */
+    }
+
+    .header-left,
+    .header-right {
+        max-width: 100%; /* take full width */
+        margin-left: 0; /* remove left margin */
+        padding: 0; /* optional, adjust padding as needed */
+    }
+
+    .header-left {
+        align-items: center; /* center the text/buttons horizontally */
+        text-align: center; /* optional, for better text alignment */
+    }
+
+    .header-right {
+        height: auto; /* let image container adapt to content */
+        padding: 16px 0; /* optional, add vertical spacing */
+    }
+
+    .header-image {
+        width: 100%;
+    }
+}
+
 	* {
 		box-sizing: border-box;
 	}
