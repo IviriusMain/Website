@@ -59,6 +59,6 @@ Since I'm not sure myself of what is going to happen while working on this, I ca
 
 ## Long story short
 
-I'm sure most users don't know about everything that's going on behind the scenes, and that's expected. Hopefully this helped clarify some things. As for the article itself, I wrote it to set a reminder to everyone: we still exist, we're still coding, and we'll be releasing updates. Slowly, but hopefully of high quality. If you wish to help us improve or you think you can contribute to one of our projects, let us know on Discord or via email at ivirius.helpdesk@gmail.com. And no, I didn't write this article with AI, in case anyone is wondering.
+I'm sure most users don't know about everything that's going on behind the scenes, and that's expected. Hopefully this helped clarify some things. As for the article itself, I wrote it to set a reminder to everyone: we still exist, we're still coding, and we'll be releasing updates. Slowly, but hopefully of high quality. If you wish to help us improve or you think you can contribute to one of our projects, let us know on Discord or via email at ivirius.helpdesk@gmail.com - and no, I didn't write this article with AI, in case anyone is wondering.
 
 </NewsPage>
