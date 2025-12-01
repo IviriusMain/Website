@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	//Imports
 	import * as Fluent from 'fluent-svelte';
 	import 'fluent-svelte/theme.css';
@@ -69,16 +69,11 @@
 >
 	<div class="after">
 		<div style="flex: shrink; height: 54px; width: 100%; display: flex; flex-direction: row;">
-			<img
-				src="./RunBox.png"
-				style="width: 16px; height: 16px; margin-left: 8px; margin-top: auto; margin-bottom: auto;"
-				alt=""
-			/>
 			<p style="font-size: 12px; margin-top: auto; margin-bottom: auto; margin-left: 8px;">Run</p>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
-				style="fill: var(--fds-text-primary); margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: 8px;"
+				style="fill: var(--fds-text-primary); margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: 18px;"
 				width="12"
 				height="12"
 			>
@@ -88,7 +83,7 @@
 			</svg>
 		</div>
 		<div style="flex: shrink; display: flex; flex-direction: row; height: 100%; width: 100%;">
-			<div style="margin-left: 16px; margin-top: 12px;">
+			<div style="margin-left: 16px; margin-top: 0px;">
 				<img
 					src="./RunBox.png"
 					style="width: 48px; height: 48px; margin-top: 16px; margin-left: 8px;"
@@ -118,6 +113,9 @@
 					</div>
 					<!-- Placeholder for Chevron icon -->
 				</div>
+				<Fluent.Checkbox style="margin-top:12px;">
+					<p style="margin-top: 12px; margin-bottom: 0px;">Run as administrator</p>
+				</Fluent.Checkbox>
 			</div>
 		</div>
 		<div
@@ -125,13 +123,13 @@
 		>
 			<Fluent.Button
 				variant="accent"
-				style="width: 80px; margin-top: auto; margin-bottom: auto; margin-left: auto;"
+				style="width: 88px; margin-top: auto; margin-bottom: auto; margin-left: auto;"
 				>Run</Fluent.Button
 			>
-			<Fluent.Button style="width: 80px; margin-top: auto; margin-bottom: auto;"
+			<Fluent.Button style="width: 88px; margin-top: auto; margin-bottom: auto;"
 				>Browse...</Fluent.Button
 			>
-			<Fluent.Button style="width: 80px; margin-top: auto; margin-bottom: auto; margin-right: 20px;"
+			<Fluent.Button style="width: 88px; margin-top: auto; margin-bottom: auto; margin-right: 20px;"
 				>Cancel</Fluent.Button
 			>
 		</div>
@@ -287,21 +285,6 @@
 			</div>
 			<div class="card-footer">
 				<Fluent.Button>Contribute</Fluent.Button>
-				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
-			</div>
-		</div>
-	</div>
-	<div class="card">
-		<img src="./homepageheader.png" alt="Card Image" class="card-image" />
-		<div class="card-content">
-			<div>
-				<h2 class="card-title">Support for Windows 10</h2>
-				<p class="card-description">
-					Rebound supports Windows 10 but it's still recommended you install it on Windows 11 for
-					maximum compatibility.
-				</p>
-			</div>
-			<div class="card-footer">
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
 			</div>
 		</div>

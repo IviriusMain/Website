@@ -9,11 +9,13 @@
 
 ✨ *Grow together, develop for the people.*
 
-**Since 2020**, Ivirius™ Community has delivered open-source tools and applications that elevate the Windows 10 and 11 experience through modern, native development in C#. At the heart of our ecosystem is **Rebound** - the flagship Windows customization framework built with **WinUI 3 and the Community Toolkit**. We also maintain additional programs like **Ivirius Text Editor Plus** and various other tools, all designed to be powerful, streamlined, and user-centric.
+<div style="height:16px"/>
+
+**Since 2020**, Ivirius™ Community has delivered open-source tools and applications that elevate the Windows 10 and 11 experience through modern, native development in C#. At the heart of our ecosystem is **Rebound** - the flagship Windows customization framework built with **WinUI and the Community Toolkit**. We also maintain additional programs like **Ivirius Text Editor Plus** and various other tools, all designed to be powerful, streamlined, and user-centric.
 
 We are a **community of passionate developers** dedicated to enhancing the Windows experience through modern, fluent, and consistent interfaces. While some flagship projects, such as **Ivirius Text Editor** and **Ivirius Text Editor Plus**, are proprietary and commercial, the core of our ecosystem - including projects like **Rebound** - remains **open source**, **free to use**, and **actively maintained** with contributions from developers worldwide.
 
----
+<div style="height:1px; margin:48px 16px; background: var(--fds-divider-stroke-default)"/>
 
 # FAQ
 

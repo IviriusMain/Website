@@ -17,35 +17,27 @@
 					<h3>About Us</h3>
 					<p>
 						We are a community of passionate developers aiming to bring you the best experience on
-						Windows 10 and 11.
+						Windows 11.
 					</p>
 				</div>
 				<div>
 					<h3>Partners and Sponsors</h3>
 					<p>
-						<a href="https://files.community/">Files</a>
-						|
-						<a href="https://github.com/FireCubeStudios">FireCubeStudios</a>
-						|
-						<a href="https://spoo.me/">spoo.me</a>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://files.community/")}>Files</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://github.com/FireCubeStudios")}>FireCubeStudios</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://spoo.me/")}>spoo.me</Fluent.Button>
 					</p>
 				</div>
 				<div>
 					<h3>Social Links</h3>
 					<p>
-						<a href="https://ivirius.com/discord">Discord</a>
-						|
-						<a href="https://www.youtube.com/@ivirius-official">YouTube</a>
-						|
-						<a href="https://x.com/IviriusOfficial">Twitter / x</a>
-						|
-						<a href="https://bsky.app/profile/ivirius-official.bsky.social">BlueSky</a>
-						|
-						<a href="https://whatsapp.com/channel/0029VaHfWsBJ93wPmDfZKy1X">WhatsApp</a>
-						|
-						<a href="https://www.instagram.com/ivirius.software/">Instagram</a>
-						|
-						<a href="https://github.com/IviriusCommunity">GitHub</a>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://ivirius.com/discord")}>Discord</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://www.youtube.com/@ivirius-official")}>YouTube</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://x.com/IviriusOfficial")}>Twitter / X</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://bsky.app/profile/ivirius-official.bsky.social")}>BlueSky</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://whatsapp.com/channel/0029VaHfWsBJ93wPmDfZKy1X")}>WhatsApp</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://www.instagram.com/ivirius.software/")}>Instagram</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => goto("https://github.com/IviriusCommunity")}>GitHub</Fluent.Button>
 					</p>
 				</div>
 			</div>
@@ -127,11 +119,11 @@
 
 			<div class="menu">
 				<img
-					src="./favicon.png"
-					style="width: 50px; align-self: center; margin-left: 0px; margin-right: 0px;"
+					src="https://ivirius.com/favicon.png"
+					style="width: 40px; align-self: center; margin-left: 0px; margin-right: 0px;"
 					alt=""
 				/>
-				<p style="align-self: center; font-size: 20px; margin-bottom: 4px; font-weight: 650;">
+				<p style="align-self: center; font-size: 20px; margin-bottom: 4px; font-weight: 600;">
 					Ivirius Community
 				</p>
 				<div class="items" style="display: flex; flex-direction: row; gap: 8px;">
@@ -208,7 +200,8 @@
 }
 
 	.footer {
-		background: var(--fds-control-fill-default);
+		background: var(--fds-control-fill-input-active);
+		border-top: 1px solid var(--fds-divider-stroke-default);
 		padding: 40px 20px;
 		display: flex;
 		flex-direction: column;
@@ -225,7 +218,7 @@
 	}
 
 	.footer h3 {
-		font-size: 1.2rem;
+		font-size: 1.5rem;
 		margin-bottom: 10px;
 	}
 
@@ -233,7 +226,7 @@
 	.footer a {
 		color: var(--fds-text-disabled);
 		text-decoration: none;
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 
 	.footer a:hover {
@@ -271,6 +264,7 @@
 	.navbar {
 		display: flex;
 		width: 100%;
+		border-bottom: 1px solid var(--fds-divider-stroke-default);
 		position: fixed; /* Keep it fixed in place */
 		top: 0; /* Align it to the top of the viewport */
 		padding: 10px 20px;
@@ -297,7 +291,6 @@
 		display: flex;
 		gap: 10px;
 		flex-wrap: wrap; /* Allows items to wrap */
-		max-width: 1600px; /* Limit the max width */
 		width: 100%; /* Allow it to stretch within the limit */
 	}
 	.menu_button {
