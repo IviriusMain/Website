@@ -13,21 +13,34 @@ description: "Get started with Rebound"
 
 Using Rebound is a very straightforward process. It's recommended that you have enough knowledge about Windows internals to navigate through this project and debug on your own in case an issue occurs. Windows mods are layers of customization applied over an existing Windows installation and should be handled with care.
 
-<Fluent.InfoBar style="margin-top: 20px; margin-bottom: 20px;" closable=false severity="caution" title="Disclaimer" message="Rebound won't work properly on Windows 10 or debloated systems like Tiny11." open/>
+<Fluent.InfoBar style="margin-top: 20px; margin-bottom: 20px;" severity="caution" title="Disclaimer" message="Rebound won't work properly on Windows 10 or debloated systems like Tiny11." open/>
 
 # Installation
 
-After downloading `Rebound Hub Installer.exe`, you will be greeted with the following options:
+After downloading `Rebound Installer.exe`, you will be greeted with the following options:
 
-- Install - this will install Rebound Hub onto your machine, and you will have to enable Rebound separately with each individual mod.
-- Uninstall -this will remove both Rebound and Rebound Hub from your machine
-- Repair - this will attempt to repair everything that is currently installed from Rebound 
+- Install Rebound - installs Rebound as a whole to your machine. Afterwards, you can launch Rebound Hub and install other mods.
+- Install Rebound Hub - installs only Rebound Hub to your machine. You will have to install Rebound and other mods from Rebound Hub afterwards.
+- Upgrade or Repair - attempts to either upgrade the current Rebound installation or repair it. Both actions are equivalent in the codebase.
+- Upgrade from Rebound v0.0.10 - if you have Rebound v0.0.10 installed, you can select this option to uninstall the old version of Rebound and install the new one.
+- Uninstall Rebound v0.0.10 - uninstalls Rebound v0.0.10, if present.
+- Uninstall - uninstalls Rebound and Rebound Hub.
 
-To learn how to uninstall Rebound without using the Rebound Hub Installer, check [Uninstalling Rebound](https://ivirius.com/docs/rebound/uninstalling-rebound/).
+<Fluent.InfoBar style="margin-top: 20px; margin-bottom: 20px;" severity="caution" title="Important" message="In order to keep the Microsoft Store apps that are managed by Rebound when uninstalling, go to Rebound Hub > Settings and turn off &quot;Manage Store apps&quot;." open/>
+
+To learn how to uninstall Rebound without using the Rebound Installer, check [Uninstalling Rebound](https://ivirius.com/docs/rebound/uninstalling-rebound/).
 
 # Manual installation
 
-After [Compiling Rebound](https://ivirius.com/docs/rebound/compiling-rebound) or getting the `.msixpackage` and `.cer` from our private testing channels, you can install Rebound Hub in a couple easy steps:
+There are two ways to install Rebound manually, depending on where you got the binaries from:
+
+### Manually compiled
+
+After [Compiling Rebound](https://ivirius.com/docs/rebound/compiling-rebound), look on your desktop for the installer executable and run it. From here onwards, simply follow the steps above.
+
+### Testing channel
+
+After getting the `.msixpackage` and `.cer` from our private testing channels, you can install Rebound Hub in a couple easy steps:
 
 1. Install `Rebound.Hub[ver].cer` by following [this guide](https://ivirius.com/docs/general/install-app-package-manually).
 2. Open `Rebound.Hub[ver].msixbundle` and install it 
@@ -43,6 +56,10 @@ To enable Rebound, open Rebound Hub, go to the `Rebound` tab, and press the butt
 After enabling Rebound, you can install each Rebound app you need. In order to configure them, search in the navigation view or use the search bar to find the dedicated configuration page for each mod.
 
 To change general Rebound settings, use the dedicated settings page inside Rebound Hub. These settings apply to every Rebound app that supports them, or to Rebound as a whole.
+
+# Applies to
+
+v0.0.10.x Developer Preview
 
 <!--Styles-->
 <style>
