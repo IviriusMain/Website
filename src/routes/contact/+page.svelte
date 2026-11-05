@@ -211,12 +211,12 @@
 	<Fluent.Button
 		variant="hyperlink"
 		style="width: auto; float: right;"
-		on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}
+		onclick={() => (window.location.href = 'https://dsc.gg/ivirius')}
 	>
 		Contact Us on Discord
 	</Fluent.Button>
 	<div style="width: 8px;" />
-	<Fluent.Button style="width: 120px; float: right;" variant="accent" on:click={handleSendClick}>
+	<Fluent.Button style="width: 120px; float: right;" variant="accent" onclick={handleSendClick}>
 		Send
 	</Fluent.Button>
 </section>

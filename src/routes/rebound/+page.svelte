@@ -215,7 +215,7 @@
 <div style="display: flex; justify-content: center; align-items: center;">
 	<div style="display: flex; margin: 50px auto 30px auto; gap: 16px;">
 		<Fluent.Button
-			on:click={() =>
+			onclick={() =>
 				(window.location.href =
 					'https://ivirius.com/download/rebound/')}
 			variant="accent">Download</Fluent.Button

@@ -23,21 +23,21 @@
 				<div>
 					<h3>Partners and Sponsors</h3>
 					<p>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://files.community/")}>Files</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://github.com/FireCubeStudios")}>FireCubeStudios</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://spoo.me/")}>spoo.me</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://files.community/")}>Files</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://github.com/FireCubeStudios")}>FireCubeStudios</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://spoo.me/")}>spoo.me</Fluent.Button>
 					</p>
 				</div>
 				<div>
 					<h3>Social Links</h3>
 					<p>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://ivirius.com/discord")}>Discord</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://ivirius.com/fluxer")}>Fluxer</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://www.youtube.com/@ivirius-official")}>YouTube</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://x.com/IviriusOfficial")}>Twitter / X</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://bsky.app/profile/ivirius-official.bsky.social")}>BlueSky</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://www.instagram.com/ivirius.software/")}>Instagram</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://github.com/IviriusCommunity")}>GitHub</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://ivirius.com/discord")}>Discord</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://ivirius.com/fluxer")}>Fluxer</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://www.youtube.com/@ivirius-official")}>YouTube</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://x.com/IviriusOfficial")}>Twitter / X</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://bsky.app/profile/ivirius-official.bsky.social")}>BlueSky</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://www.instagram.com/ivirius.software/")}>Instagram</Fluent.Button>
+						<Fluent.Button variant="hyperlink" onclick={() => window.open("https://github.com/IviriusCommunity")}>GitHub</Fluent.Button>
 					</p>
 				</div>
 			</div>
@@ -72,24 +72,24 @@
 							</svg>
 
 							<svelte:fragment slot="flyout">
-								<Fluent.MenuFlyoutItem on:click={() => goto('/')}>Home</Fluent.MenuFlyoutItem>
+								<Fluent.MenuFlyoutItem onclick={() => goto('/')}>Home</Fluent.MenuFlyoutItem>
 								<Fluent.MenuFlyoutItem cascading
 									>Apps and Tools
 
 									<svelte:fragment slot="flyout">
 										<Fluent.MenuFlyoutItem
-											on:click={() =>
+											onclick={() =>
 												(window.location.href =
 													'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
 											>Ivirius Text Editor</Fluent.MenuFlyoutItem
 										>
 										<Fluent.MenuFlyoutItem
-											on:click={() =>
+											onclick={() =>
 												(window.location.href =
 													'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
 											>Ivirius Text Editor Plus</Fluent.MenuFlyoutItem
 										>
-										<Fluent.MenuFlyoutItem on:click={() => goto('/rebound')}
+										<Fluent.MenuFlyoutItem onclick={() => goto('/rebound')}
 											>Rebound</Fluent.MenuFlyoutItem
 										>
 									</svelte:fragment>
@@ -97,21 +97,21 @@
 								<Fluent.MenuFlyoutItem cascading
 									>Community
 									<svelte:fragment slot="flyout">
-										<Fluent.MenuFlyoutItem on:click={() => goto('/docs')}
+										<Fluent.MenuFlyoutItem onclick={() => goto('/docs')}
 											>Docs</Fluent.MenuFlyoutItem
 										>
-										<Fluent.MenuFlyoutItem on:click={() => goto('/news')}
+										<Fluent.MenuFlyoutItem onclick={() => goto('/news')}
 											>News</Fluent.MenuFlyoutItem
 										>
-										<Fluent.MenuFlyoutItem on:click={() => goto('/discord')}
+										<Fluent.MenuFlyoutItem onclick={() => goto('/discord')}
 											>Discord Server</Fluent.MenuFlyoutItem
 										>
-										<Fluent.MenuFlyoutItem on:click={() => goto('/fluxer')}
+										<Fluent.MenuFlyoutItem onclick={() => goto('/fluxer')}
 											>Fluxer Server</Fluent.MenuFlyoutItem
 										>
 									</svelte:fragment>
 								</Fluent.MenuFlyoutItem>
-								<Fluent.MenuFlyoutItem on:click={() => goto('/contact')}
+								<Fluent.MenuFlyoutItem onclick={() => goto('/contact')}
 									>Contact</Fluent.MenuFlyoutItem
 								>
 							</svelte:fragment>
@@ -136,23 +136,23 @@
 					<Fluent.MenuBar
 						style="color: var(--fds-text-primary);  align-self: center; align-items: center;"
 					>
-						<Fluent.MenuBarItem on:click={() => goto('/')}>Home</Fluent.MenuBarItem>
+						<Fluent.MenuBarItem onclick={() => goto('/')}>Home</Fluent.MenuBarItem>
 						<Fluent.MenuBarItem>
 							Apps and Tools
 							<svelte:fragment slot="flyout">
 								<Fluent.MenuFlyoutItem
-									on:click={() =>
+									onclick={() =>
 										(window.location.href =
 											'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
 									>Ivirius Text Editor</Fluent.MenuFlyoutItem
 								>
 								<Fluent.MenuFlyoutItem
-									on:click={() =>
+									onclick={() =>
 										(window.location.href =
 											'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
 									>Ivirius Text Editor Plus</Fluent.MenuFlyoutItem
 								>
-								<Fluent.MenuFlyoutItem on:click={() => goto('/rebound')}
+								<Fluent.MenuFlyoutItem onclick={() => goto('/rebound')}
 									>Rebound</Fluent.MenuFlyoutItem
 								>
 							</svelte:fragment>
@@ -160,12 +160,12 @@
 						<Fluent.MenuBarItem>
 							Community
 							<svelte:fragment slot="flyout">
-								<Fluent.MenuFlyoutItem on:click={() => goto('/docs')}>Docs</Fluent.MenuFlyoutItem>
-								<Fluent.MenuFlyoutItem on:click={() => goto('/news')}>News</Fluent.MenuFlyoutItem>
-								<Fluent.MenuFlyoutItem on:click={() => goto('/discord')}
+								<Fluent.MenuFlyoutItem onclick={() => goto('/docs')}>Docs</Fluent.MenuFlyoutItem>
+								<Fluent.MenuFlyoutItem onclick={() => goto('/news')}>News</Fluent.MenuFlyoutItem>
+								<Fluent.MenuFlyoutItem onclick={() => goto('/discord')}
 									>Discord Server</Fluent.MenuFlyoutItem
 								>
-								<Fluent.MenuFlyoutItem on:click={() => goto('/fluxer')}
+								<Fluent.MenuFlyoutItem onclick={() => goto('/fluxer')}
 									>Fluxer Server</Fluent.MenuFlyoutItem
 								>
 							</svelte:fragment>
@@ -175,7 +175,7 @@
 			</div>
 			<div class="contact_button">
 				<Fluent.Button
-					on:click={() => goto('/contact')}
+					onclick={() => goto('/contact')}
 					style="color: var(--fds-text-primary); height: 32px; align-self: center; margin-top: 3px; align-items: center;"
 					variant="hyperlink"
 				>

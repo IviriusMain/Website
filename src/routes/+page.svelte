@@ -66,14 +66,14 @@ function scrollToSection() {
 			<p class="sub-text">Grow together, develop for the people.</p>
 
 			<div class="button-row">
-				<Fluent.Button variant="accent" on:click={() => goto('/download/ivirius-text-editor-plus')}
+				<Fluent.Button variant="accent" onclick={() => goto('/download/ivirius-text-editor-plus')}
 					>Ivirius Text Editor Plus</Fluent.Button
 				>
 				<Fluent.Button>Ivirius Text Editor</Fluent.Button>
 				<Fluent.Button>Rebound</Fluent.Button>
 			</div>
 			<div class="button-row">
-				<Fluent.Button on:click={() => scrollToSection()} variant="hyperlink">
+				<Fluent.Button onclick={() => scrollToSection()} variant="hyperlink">
 					<div class="button-row" style="margin-top: 4px; margin-bottom: 4px;">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -116,12 +116,12 @@ function scrollToSection() {
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() =>
+					onclick={() =>
 						(window.location.href =
 							'https://apps.microsoft.com/detail/9mv281zzf51p?hl=en-US&gl=US')}
 					>Download</Fluent.Button
 				>
-				<Fluent.Button on:click={() => (window.location.href = 'https://dsc.gg/ivirius')}
+				<Fluent.Button onclick={() => (window.location.href = 'https://dsc.gg/ivirius')}
 					>Join Beta</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
@@ -147,7 +147,7 @@ function scrollToSection() {
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() =>
+					onclick={() =>
 						(window.location.href =
 							'https://apps.microsoft.com/detail/9n4t9h9182j5?hl=en-US&gl=US')}
 					>Buy for $2.99</Fluent.Button
@@ -171,11 +171,11 @@ function scrollToSection() {
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() => (window.location.href = 'https://ivirius.com/download/rebound/')}
+					onclick={() => (window.location.href = 'https://ivirius.com/download/rebound/')}
 					disabled={false}>Download</Fluent.Button
 				>
 				<Fluent.Button
-					on:click={() => (window.location.href = 'https://github.com/IviriusCommunity/Rebound')}
+					onclick={() => (window.location.href = 'https://github.com/IviriusCommunity/Rebound')}
 					>Contribute</Fluent.Button
 				>
 				<Fluent.Button variant="hyperlink">Learn more</Fluent.Button>
@@ -196,7 +196,7 @@ function scrollToSection() {
 			<div class="card-footer">
 				<Fluent.Button
 					variant="accent"
-					on:click={() => (window.location.href = 'https://ivirius.com/discord/')}>Join</Fluent.Button
+					onclick={() => (window.location.href = 'https://ivirius.com/discord/')}>Join</Fluent.Button
 				>
 			</div>
 		</div>

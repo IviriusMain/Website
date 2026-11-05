@@ -87,7 +87,7 @@
 		<div class="header-left">
 			<h1 class="header-title">{headerTitle}</h1>
 			<div class="header-buttons">
-				<Fluent.Button variant="accent" on:click={() => goto(buttonLink)}>
+				<Fluent.Button variant="accent" onclick={() => goto(buttonLink)}>
 					{buttonText}
 				</Fluent.Button>
 			</div>
@@ -100,7 +100,7 @@
 
 <div class="cards-container">
 	{#each cards as card}
-		<div class="card" on:click={() => goto(card.link)} aria-label={`Open ${card.title}`}>
+		<div class="card" onclick={() => goto(card.link)} aria-label={`Open ${card.title}`}>
 			<img src={card.image} alt={card.title} class="card-image" />
 			<div class="card-content">
 				<h2 class="card-title">{card.title}</h2>

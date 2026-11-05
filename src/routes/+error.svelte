@@ -12,7 +12,7 @@
 	<h1>
 		<Fluent.ContentDialog open={true} title="Uh oh...">
 			<p>No one's here. Check the URL and try again.</p>
-			<Fluent.Button variant="accent" slot="footer" on:click={() => goto('/')}
+			<Fluent.Button variant="accent" slot="footer" onclick={() => goto('/')}
 				>Home page</Fluent.Button
 			>
 		</Fluent.ContentDialog>

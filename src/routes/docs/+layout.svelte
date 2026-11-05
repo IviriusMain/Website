@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Fluent from "fluent-svelte";
   import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
+  import { page } from '$app/state';
   
   // Custom slide down transition anchored to bottom
   function slideDown(node: HTMLElement, { duration = 150 }) {
@@ -26,12 +26,14 @@
   // Dynamically import all meta.md and +page.md files
   const metaFiles = import.meta.glob('/src/routes/docs/**/meta.md', { 
     eager: true, 
-    as: 'raw' 
+    query: '?raw',
+    import: 'default'
   });
   
   const pageFiles = import.meta.glob('/src/routes/docs/**/+page.md', { 
     eager: true, 
-    as: 'raw' 
+    query: '?raw',
+    import: 'default'
   });
 
   interface DocItem {
@@ -145,7 +147,7 @@
     return rootCategories;
   }
 
-  let navigation = buildNavigation();
+  let navigation = $state(buildNavigation());
 
   // Debug: log the navigation structure to see what we're getting
   console.log('Navigation structure:', navigation);
@@ -170,30 +172,29 @@
     goto(path);
   }
 
-  $: currentPath = $page.url.pathname;
+  let currentPath = $derived(page.url.pathname);
   
   // Find current page metadata for meta tags
-  $: currentPageMeta = (() => {
-    const findInCategory = (cat: DocCategory): DocItem | null => {
-      // Check items in this category
-      const item = cat.items.find(i => i.path === currentPath);
-      if (item) return item;
-      
-      // Check subcategories recursively
-      for (const subcat of cat.subcategories) {
-        const found = findInCategory(subcat);
-        if (found) return found;
+  let currentPageMeta = $derived.by(() => {
+      const findInCategory = (cat: DocCategory): DocItem | null => {
+          const item = cat.items.find(i => i.path === currentPath);
+          if (item) return item;
+
+          for (const subcat of cat.subcategories) {
+              const found = findInCategory(subcat);
+              if (found) return found;
+          }
+
+          return null;
+      };
+
+      for (const category of navigation) {
+          const found = findInCategory(category);
+          if (found) return found;
       }
-      
+
       return null;
-    };
-    
-    for (const category of navigation) {
-      const found = findInCategory(category);
-      if (found) return found;
-    }
-    return null;
-  })();
+  });
 </script>
 
 <svelte:head>
@@ -212,7 +213,7 @@
 
 <div class="docs-layout">
   <div class="docs-sidebar">
-    <Fluent.ListItem on:click={() => goto('/docs')} selected={currentPath === '/docs'}>
+    <Fluent.ListItem onclick={() => goto('/docs')} selected={currentPath === '/docs'}>
       Home
     </Fluent.ListItem>
 
@@ -223,7 +224,7 @@
         <div class="category">
           <button 
             class="category-button"
-            on:click={() => toggleCategory(category.id)}
+            onclick={() => toggleCategory(category.id)}
           >
             <span class="category-title">{category.title}</span>
             <svg 
@@ -247,7 +248,7 @@
                 <div class="category subcategory">
                   <button 
                     class="category-button"
-                    on:click={() => toggleCategory(subcategory.id)}
+                    onclick={() => toggleCategory(subcategory.id)}
                   >
                     <span class="category-title">{subcategory.title}</span>
                     <svg 
@@ -269,7 +270,7 @@
                     >
                       {#each subcategory.items as item}
                         <Fluent.ListItem
-                          on:click={() => navigateToPage(item.path)}
+                          onclick={() => navigateToPage(item.path)}
                           selected={currentPath === item.path}
                         >
                           {item.title}
@@ -281,7 +282,7 @@
               {/each}
               {#each category.items as item}
                 <Fluent.ListItem
-                  on:click={() => navigateToPage(item.path)}
+                  onclick={() => navigateToPage(item.path)}
                   selected={currentPath === item.path}
                 >
                   {item.title}
