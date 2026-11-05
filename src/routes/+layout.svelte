@@ -23,21 +23,21 @@
 				<div>
 					<h3>Partners and Sponsors</h3>
 					<p>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://files.community/")}>Files</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://github.com/FireCubeStudios")}>FireCubeStudios</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://spoo.me/")}>spoo.me</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://files.community/")}>Files</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://github.com/FireCubeStudios")}>FireCubeStudios</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://spoo.me/")}>spoo.me</Fluent.Button>
 					</p>
 				</div>
 				<div>
 					<h3>Social Links</h3>
 					<p>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://ivirius.com/discord")}>Discord</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://www.youtube.com/@ivirius-official")}>YouTube</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://x.com/IviriusOfficial")}>Twitter / X</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://bsky.app/profile/ivirius-official.bsky.social")}>BlueSky</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://whatsapp.com/channel/0029VaHfWsBJ93wPmDfZKy1X")}>WhatsApp</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://www.instagram.com/ivirius.software/")}>Instagram</Fluent.Button>
-						<Fluent.Button variant="hyperlink" on:click={() => goto("https://github.com/IviriusCommunity")}>GitHub</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://ivirius.com/discord")}>Discord</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://ivirius.com/fluxer")}>Fluxer</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://www.youtube.com/@ivirius-official")}>YouTube</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://x.com/IviriusOfficial")}>Twitter / X</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://bsky.app/profile/ivirius-official.bsky.social")}>BlueSky</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://www.instagram.com/ivirius.software/")}>Instagram</Fluent.Button>
+						<Fluent.Button variant="hyperlink" on:click={() => window.open("https://github.com/IviriusCommunity")}>GitHub</Fluent.Button>
 					</p>
 				</div>
 			</div>
@@ -106,6 +106,9 @@
 										<Fluent.MenuFlyoutItem on:click={() => goto('/discord')}
 											>Discord Server</Fluent.MenuFlyoutItem
 										>
+										<Fluent.MenuFlyoutItem on:click={() => goto('/fluxer')}
+											>Fluxer Server</Fluent.MenuFlyoutItem
+										>
 									</svelte:fragment>
 								</Fluent.MenuFlyoutItem>
 								<Fluent.MenuFlyoutItem on:click={() => goto('/contact')}
@@ -161,6 +164,9 @@
 								<Fluent.MenuFlyoutItem on:click={() => goto('/news')}>News</Fluent.MenuFlyoutItem>
 								<Fluent.MenuFlyoutItem on:click={() => goto('/discord')}
 									>Discord Server</Fluent.MenuFlyoutItem
+								>
+								<Fluent.MenuFlyoutItem on:click={() => goto('/fluxer')}
+									>Fluxer Server</Fluent.MenuFlyoutItem
 								>
 							</svelte:fragment>
 						</Fluent.MenuBarItem>
@@ -299,10 +305,28 @@
 	}
 	/* Make items move to the overflow pane dynamically */
 	@media (max-width: 700px) {
-		.menu_button {
-			display: block;
-			order: -1; /* ensures it stays on the left in flex layout */
+		.navbar {
+			align-items: center;
 		}
+
+		.menu {
+			align-self: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.menu img,
+		.menu p,
+		.menu_button {
+			align-self: center;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.menu img,
+		.menu p {
+			transform: translateY(4px);
+		}
+
 		.items {
 			visibility: collapse;
 		}
