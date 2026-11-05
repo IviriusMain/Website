@@ -1,9 +1,17 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import adapter from '@sveltejs/adapter-vercel';
 import { mdsvex } from 'mdsvex';
 
 export default {
 	plugins: [
 		sveltekit({
+			adapter: adapter(),
+				  extensions: ['.svelte', '.md'],
+				  preprocess: [
+					  mdsvex({
+						  extensions: ['.md']
+					  })
+				  ]
 			extensions: ['.svelte', '.md'],
 			preprocess: [
 				mdsvex({
