@@ -201,6 +201,24 @@ function scrollToSection() {
 			</div>
 		</div>
 	</div>
+
+	<div class="card">
+		<img src="./fluxerPreviewCard.png" alt="Fluxer Server Card" class="card-image" />
+		<div class="card-content">
+			<div>
+				<h2 class="card-title">Fluxer Server</h2>
+				<p class="card-description">
+					Our official Discord server mirror on Fluxer.
+				</p>
+			</div>
+			<div class="card-footer">
+				<Fluent.Button
+					variant="accent"
+					onclick={() => (window.location.href = 'https://ivirius.com/fluxer/')}>Join</Fluent.Button
+				>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Styles -->
