@@ -1,7 +1,7 @@
-
-
 import { redirect } from '@sveltejs/kit';
 
 export function load() {
-    throw redirect(302, 'https://fluxer.gg/V6pyrFce');
+    redirect(302, 'https://fluxer.gg/V6pyrFce', {
+        external: true
+    });
 }
