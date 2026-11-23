@@ -27,22 +27,25 @@ function scrollToSection() {
 
 <!-- Head Section -->
 <svelte:head>
-	<title>Ivirius Community - Home</title>
-	<meta name="description" content="Ivirius Community official website" />
-	<meta name="author" content="Ivirius Community" />
-	<meta name="theme-color" content="#6ba4ff" />
+    <title>Ivirius Community - Home</title>
+    <meta name="description" content="Ivirius Community official website" />
+    <meta name="author" content="Ivirius Community" />
+    <meta name="theme-color" content="#6ba4ff" />
 
-	<!-- Open Graph Meta Tags for better previewing -->
-	<meta property="og:title" content="Ivirius Community - Home" />
-	<meta property="og:description" content="Ivirius Community official website" />
-	<meta property="og:image" content="https://ivirius.com/CommunityBanner.png" />
-	<meta property="og:image:alt" content="Ivirius Community" />
-	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image:width" content="1600" />
-	<meta property="og:image:height" content="900" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://ivirius.com/" />
-	<meta name="twitter:card" content="https://ivirius.com/CommunityBanner.png" />
+    <meta property="og:title" content="Ivirius Community - Home" />
+    <meta property="og:description" content="Ivirius Community official website" />
+    <meta property="og:image" content="https://ivirius.com/CommunityBanner.png" />
+    <meta property="og:image:secure_url" content="https://ivirius.com/CommunityBanner.png" />
+    <meta property="og:image:alt" content="Ivirius Community" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="900" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ivirius.com/" />
+    <meta property="og:site_name" content="Ivirius Community" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ivirius.com/CommunityBanner.png" />
 </svelte:head>
 
 <div class="hero-wrapper">
