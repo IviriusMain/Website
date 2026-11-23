@@ -38,10 +38,11 @@ function scrollToSection() {
 	<meta property="og:image" content="https://ivirius.com/CommunityBanner.png" />
 	<meta property="og:image:alt" content="Ivirius Community" />
 	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image:width" content="16000" />
-	<meta property="og:image:height" content="9000" />
+	<meta property="og:image:width" content="1600" />
+	<meta property="og:image:height" content="900" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ivirius.com/" />
+	<meta name="twitter:card" content="https://ivirius.com/CommunityBanner.png" />
 </svelte:head>
 
 <div class="hero-wrapper">
